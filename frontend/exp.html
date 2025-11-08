@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        screens: {
+                            'max-1024': {'max': '1024px'},
+                            'max-780': {'max': '780px'},
+                        },
+                        colors: {
+                            accent: "#313B52",
+                        }
+                    }
+                }
+            }
+        </script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Caveat:wght@400..700&display=swap');
+            body{
+                background: white;
+                font-family: "Arimo", sans-serif;
+                color: #444444;
+            }
+            .caveat{
+                font-family: 'Caveat', sans-serif;
+            }
+            .page {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.5s ease, transform 0.5s ease;
+                position: absolute;
+                width: 100%;
+            }
+
+            .page.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        </style>
+    </head>
+<body>
+<div class="flex flex-col md:flex-col items-center mb-7">
+    <div class="md:w-4/5">
+        <h1 class="text-accent font-bold text-4xl">BACKEND разработчик</h1>
+    </div>
+
+
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>
