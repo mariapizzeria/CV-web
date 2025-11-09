@@ -16,7 +16,7 @@ func NewRepository(database *db.Db) EducationRepository {
 // Получение всех пройденных курсов
 func (repo *EducationRepository) GetAll() ([]EducationResponse, error) {
 	var result []EducationResponse
-	res := repo.db.Table("education").Order("duration").Find(&result)
+	res := repo.db.Table("education").Where("deleted_at is null").Order("duration").Find(&result)
 	if res.Error != nil {
 		return nil, res.Error
 	}
