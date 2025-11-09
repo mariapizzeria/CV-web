@@ -13,3 +13,7 @@ func ReadBodyError(w http.ResponseWriter) {
 func CreateError(w http.ResponseWriter) {
 	http.Error(w, "Error to create content", http.StatusInternalServerError)
 }
+
+func UpdateError(w http.ResponseWriter) {
+	http.Error(w, "Error to update content", http.StatusInternalServerError)
+}

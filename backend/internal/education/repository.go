@@ -34,13 +34,12 @@ func (repo *EducationRepository) GetById(id string) (*Education, error) {
 }
 
 // Обновление курса по id
-func (repo *EducationRepository) UpdateContent(content *EducationResponse) (*Education, error) {
-	var result Education
+func (repo *EducationRepository) UpdateContent(content *Education) (*Education, error) {
 	res := repo.db.Table("education").Clauses(clause.Returning{}).Updates(content)
 	if res.Error != nil {
 		return nil, res.Error
 	}
-	return &result, nil
+	return content, nil
 }
 
 // Добавление нового курса
