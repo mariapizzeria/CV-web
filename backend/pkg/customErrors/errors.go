@@ -5,3 +5,11 @@ import "net/http"
 func GetContentError(w http.ResponseWriter) {
 	http.Error(w, "Error to GET content", http.StatusNotFound)
 }
+
+func ReadBodyError(w http.ResponseWriter) {
+	http.Error(w, "Error to read body", http.StatusNotFound)
+}
+
+func CreateError(w http.ResponseWriter) {
+	http.Error(w, "Error to create content", http.StatusInternalServerError)
+}

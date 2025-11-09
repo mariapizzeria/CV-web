@@ -16,7 +16,7 @@ func NewRepository(database *db.Db) EducationRepository {
 // Получение всех пройденных курсов
 func (repo *EducationRepository) GetAll() ([]EducationResponse, error) {
 	var result []EducationResponse
-	res := repo.db.Table("educations").First(&result)
+	res := repo.db.Table("education").Order("duration").Find(&result)
 	if res.Error != nil {
 		return nil, res.Error
 	}
@@ -26,7 +26,7 @@ func (repo *EducationRepository) GetAll() ([]EducationResponse, error) {
 // Получение курса по id
 func (repo *EducationRepository) GetById(id string) (*Education, error) {
 	var result Education
-	res := repo.db.Table("educations").Where("id = ?", id).First(&result)
+	res := repo.db.Table("education").Where("id = ?", id).First(&result)
 	if res.Error != nil {
 		return nil, res.Error
 	}
@@ -36,7 +36,7 @@ func (repo *EducationRepository) GetById(id string) (*Education, error) {
 // Обновление курса по id
 func (repo *EducationRepository) UpdateContent(content *EducationResponse) (*Education, error) {
 	var result Education
-	res := repo.db.Table("educations").Clauses(clause.Returning{}).Updates(content)
+	res := repo.db.Table("education").Clauses(clause.Returning{}).Updates(content)
 	if res.Error != nil {
 		return nil, res.Error
 	}
@@ -44,18 +44,17 @@ func (repo *EducationRepository) UpdateContent(content *EducationResponse) (*Edu
 }
 
 // Добавление нового курса
-func (repo *EducationRepository) CreateNewContent(content *EducationResponse) (*Education, error) {
-	var result Education
-	res := repo.db.Table("educations").Create(&content)
+func (repo *EducationRepository) CreateNewContent(content *EducationResponse) (*EducationResponse, error) {
+	res := repo.db.Table("education").Create(content)
 	if res.Error != nil {
 		return nil, res.Error
 	}
-	return &result, nil
+	return content, nil
 }
 
 // Удаление курса по id
 func (repo *EducationRepository) DeleteContent(id uint) error {
 	var education Education
-	res := repo.db.Table("educations").Delete(&education, id)
+	res := repo.db.Table("education").Delete(&education, id)
 	return res.Error
 }
