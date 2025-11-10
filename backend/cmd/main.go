@@ -9,6 +9,7 @@ import (
 	"github.com/mariapizzeria/cv-web/backend/internal/education"
 	"github.com/mariapizzeria/cv-web/backend/internal/experience"
 	"github.com/mariapizzeria/cv-web/backend/internal/social"
+	"github.com/mariapizzeria/cv-web/backend/internal/stack"
 )
 
 func main() {
@@ -20,6 +21,7 @@ func main() {
 	educationRepository := education.NewRepository(newDB)
 	experienceRepository := experience.NewRepository(newDB)
 	socialRepository := social.NewRepository(newDB)
+	skillsRepository := stack.NewRepository(newDB)
 	// handlers
 	education.NewHandler(router, education.HandlerDeps{
 		Repository: educationRepository,
@@ -29,6 +31,9 @@ func main() {
 	})
 	social.NewHandler(router, social.HandlerDeps{
 		Repository: socialRepository,
+	})
+	stack.NewHandler(router, stack.HandlerDeps{
+		Repository: skillsRepository,
 	})
 	// server
 	server := &http.Server{
