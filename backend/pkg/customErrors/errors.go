@@ -21,3 +21,7 @@ func UpdateError(w http.ResponseWriter) {
 func NotFound(w http.ResponseWriter) {
 	http.Error(w, "Error to not found content", http.StatusNotFound)
 }
+
+func ServerError(w http.ResponseWriter) {
+	http.Error(w, "Error to server error", http.StatusInternalServerError)
+}
