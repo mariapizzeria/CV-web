@@ -10,6 +10,7 @@ import (
 	"github.com/mariapizzeria/cv-web/backend/internal/experience"
 	"github.com/mariapizzeria/cv-web/backend/internal/social"
 	"github.com/mariapizzeria/cv-web/backend/internal/stack"
+	"github.com/mariapizzeria/cv-web/backend/middleware"
 )
 
 func main() {
@@ -38,7 +39,7 @@ func main() {
 	// server
 	server := &http.Server{
 		Addr:    ":8082",
-		Handler: router,
+		Handler: middleware.CORSHandler(router),
 	}
 	log.Println("Listening on port 8082")
 	server.ListenAndServe()
