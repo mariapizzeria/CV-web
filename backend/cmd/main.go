@@ -3,6 +3,8 @@ package main
 import (
 	"log"
 	"net/http"
+	"path/filepath"
+	"strings"
 
 	"github.com/mariapizzeria/cv-web/backend/configs"
 	"github.com/mariapizzeria/cv-web/backend/db"
@@ -18,6 +20,33 @@ func main() {
 	newDB := db.NewDb(conf)
 	router := http.NewServeMux()
 
+	// static execute
+	fs := http.FileServer(http.Dir("./static"))
+	router.Handle("/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		ext := strings.ToLower(filepath.Ext(r.URL.Path))
+		switch ext {
+		case ".js":
+			w.Header().Set("Content-Type", "application/javascript")
+		case ".css":
+			w.Header().Set("Content-Type", "text/css")
+		case ".html":
+			w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		case ".png":
+			w.Header().Set("Content-Type", "image/png")
+		case ".jpg", ".jpeg":
+			w.Header().Set("Content-Type", "image/jpeg")
+		case ".svg":
+			w.Header().Set("Content-Type", "image/svg+xml")
+		case ".ico":
+			w.Header().Set("Content-Type", "image/x-icon")
+		}
+		if r.URL.Path == "/" {
+			http.ServeFile(w, r, "./static/index.html")
+			return
+		}
+
+		fs.ServeHTTP(w, r)
+	}))
 	// repository
 	educationRepository := education.NewRepository(newDB)
 	experienceRepository := experience.NewRepository(newDB)
