@@ -1,0 +1,12 @@
+{
+  "name": "cv-web",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "dev": "tsc && npx live-server"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
