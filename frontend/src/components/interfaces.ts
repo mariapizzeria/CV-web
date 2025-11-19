@@ -8,3 +8,9 @@ export interface SkillApiResponse {
     type: string;
     skill: string[];
 }
+
+export interface ExperienceApiResponse {
+    duration: string;
+    title: string;
+    description: string;
+}

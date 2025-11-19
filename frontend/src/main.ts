@@ -4,11 +4,13 @@ import { Renderer } from './components/renderer.js';
 class App {
     private educationApi: Api;
     private skillApi: Api;
+    private experienceApi: Api;
     private renderer: Renderer;
 
     constructor() {
         this.educationApi = new Api();
         this.skillApi = new Api();
+        this.experienceApi = new Api();
         this.renderer = new Renderer();
     }
 
@@ -18,6 +20,9 @@ class App {
         }
         if (document.getElementById('skills-container')) {
             await this.loadSkillsData();
+        }
+        if (document.getElementById('experience-container')) {
+            await this.loadExperienceData();
         }
     }
 
@@ -40,6 +45,17 @@ class App {
         } catch(error) {
             console.error('Failed to load skills data:', error);
             this.renderer.showError('Не удалось загрузить данные о навыках', 'skills');
+        }
+    }
+
+    private async loadExperienceData(): Promise<void> {
+        try {
+            this.renderer.showLoading('experience');
+            const experienceData = await this.experienceApi.getExperience();
+            this.renderer.createExperienceItem(experienceData);
+        } catch(error) {
+            console.error('Failed to load experience data:', error);
+            this.renderer.showError('Не удалось загрузить данные о навыках', 'experience');
         }
     }
 }

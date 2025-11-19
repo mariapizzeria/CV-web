@@ -1,12 +1,34 @@
-import { EducationApiResponse, SkillApiResponse } from './interfaces.js';
+import { EducationApiResponse, SkillApiResponse, ExperienceApiResponse } from './interfaces.js';
 
 export class Renderer {
     private educationContainer: HTMLElement | null;
     private skillsContainer: HTMLElement | null;
+    private experienceContainer: HTMLElement | null;
 
     constructor() {
         this.educationContainer = document.getElementById('education-container');
         this.skillsContainer = document.getElementById('skills-container');
+        this.experienceContainer = document.getElementById('experience-container');
+    }
+
+    public createExperienceItem(experience: ExperienceApiResponse[]): void {
+        if (!this.experienceContainer) {
+            console.warn('Container not found');
+            return;
+        }
+
+        let htmlString = '';
+
+        experience.forEach((item) => {
+            htmlString += `
+                    <div class="p-4">
+                        <h3 class="text-left text-xl mb-6 mt-12">${item.duration}</h3>
+                        <h2 class="text-accent text-center text-4xl mb-12">${item.title}</h2>
+                        <p class="text-left text-xl mt-4 mb-6">${item.description}</p>
+                    </div>
+            `;
+        });
+        this.experienceContainer.innerHTML = htmlString;
     }
 
     public createSkillItem(skills: SkillApiResponse[]): void {
@@ -82,8 +104,22 @@ export class Renderer {
         this.educationContainer.innerHTML = htmlString;
     }
 
-    public showLoading(containerType: 'education' | 'skills'): void {
-        const container = containerType === 'education' ? this.educationContainer : this.skillsContainer;
+    public showLoading(containerType: 'education' | 'skills' | 'experience'): void {
+        let container: HTMLElement | null;
+
+        switch (containerType) {
+            case 'education':
+                container = this.educationContainer;
+                break;
+            case 'skills':
+                container = this.skillsContainer;
+                break;
+            case 'experience':
+                container = this.experienceContainer;
+                break;
+            default:
+                container = null;
+        }
 
         if (!container) {
             console.warn(`${containerType} container not found for loading`);
@@ -91,13 +127,27 @@ export class Renderer {
         }
 
         container.innerHTML = `
-            <div class="flex justify-center items-center py-8">
-                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div>
-            </div>`;
+        <div class="flex justify-center items-center py-8">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div>
+        </div>`;
     }
 
-    public showError(message: string, containerType: 'education' | 'skills'): void {
-        const container = containerType === 'education' ? this.educationContainer : this.skillsContainer;
+    public showError(message: string, containerType: 'education' | 'skills' | 'experience'): void {
+        let container: HTMLElement | null;
+
+        switch (containerType) {
+            case 'education':
+                container = this.educationContainer;
+                break;
+            case 'skills':
+                container = this.skillsContainer;
+                break;
+            case 'experience':
+                container = this.experienceContainer;
+                break;
+            default:
+                container = null;
+        }
 
         if (!container) {
             console.warn(`${containerType} container not found for error`);
@@ -105,11 +155,11 @@ export class Renderer {
         }
 
         container.innerHTML = `
-            <div class="flex justify-center items-center py-8">
-                <div class="text-red-500 text-center">
-                    <p class="text-xl">Ошибка загрузки</p>
-                    <p class="text-sm">${message}</p>
-                </div>
-            </div>`;
+        <div class="flex justify-center items-center py-8">
+            <div class="text-red-500 text-center">
+                <p class="text-xl">Ошибка загрузки</p>
+                <p class="text-sm">${message}</p>
+            </div>
+        </div>`;
     }
 }
