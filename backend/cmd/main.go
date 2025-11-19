@@ -13,7 +13,7 @@ import (
 	"github.com/mariapizzeria/cv-web/backend/pkg/db"
 )
 
-func main() {
+func App() http.Handler {
 	conf := configs.LoadConfig()
 	newDB := db.NewDb(conf)
 	router := http.NewServeMux()
@@ -35,10 +35,14 @@ func main() {
 	stack.NewHandler(router, stack.HandlerDeps{
 		Repository: skillsRepository,
 	})
-	// server
+	return router
+}
+
+func main() {
+	app := App()
 	server := &http.Server{
 		Addr:    ":8082",
-		Handler: middleware.CORSHandler(router),
+		Handler: middleware.CORSHandler(app),
 	}
 	log.Println("Listening on port 8082")
 	server.ListenAndServe()
