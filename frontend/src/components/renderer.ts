@@ -1,34 +1,6 @@
-// Объединяем все в одном файле чтобы избежать проблем с импортами
+import { EducationApiResponse } from './interfaces.js';
 
-interface EducationApiResponse {
-    duration: string;
-    college: string;
-    course: string;
-}
-
-class EducationApi {
-    private baseUrl: string;
-
-    constructor(baseUrl: string = 'http://localhost:8082') {
-        this.baseUrl = baseUrl;
-    }
-
-    async getEducation(): Promise<EducationApiResponse[]> {
-        console.log('Fetching from:', `${this.baseUrl}/education`);
-        try {
-            const response = await fetch(`${this.baseUrl}/education`);
-            if (!response.ok) {
-                throw new Error(`Http error: ${response.status}`);
-            }
-            return await response.json();
-        } catch (error) {
-            console.error('Error fetching education api', error);
-            throw error;
-        }
-    }
-}
-
-class Renderer {
+export class Renderer {
     private container: HTMLElement;
 
     constructor(containerId: string = 'education-container') {
@@ -86,35 +58,3 @@ class Renderer {
             </div>`;
     }
 }
-
-class App {
-    private educationApi: EducationApi;
-    private renderer: Renderer;
-
-    constructor() {
-        this.educationApi = new EducationApi();
-        this.renderer = new Renderer('education-container');
-    }
-
-    async init(): Promise<void> {
-        if (document.getElementById('education-container')) {
-            await this.loadEducationData();
-        }
-    }
-
-    private async loadEducationData(): Promise<void> {
-        try {
-            this.renderer.showLoading();
-            const educationData = await this.educationApi.getEducation();
-            this.renderer.createEducationItem(educationData);
-        } catch(error) {
-            console.error('Failed to load education data:', error);
-            this.renderer.showLoading();
-        }
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const app = new App();
-    app.init().catch(console.error);
-});

@@ -1,7 +1,7 @@
 package db
 
 import (
-	"github.com/mariapizzeria/cv-web/backend/configs"
+	"github.com/mariapizzeria/cv-web/backend/pkg/configs"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
