@@ -15,7 +15,7 @@ func NewRepository(database *db.Db) *Repository {
 
 func (repo *Repository) GetAll() ([]StackResponse, error) {
 	var result []StackResponse
-	res := repo.db.Table("skills").Group("type").Find(result)
+	res := repo.db.Table("skills").Where("deleted_at is NULL").Find(&result)
 	if res.Error != nil {
 		return nil, res.Error
 	}

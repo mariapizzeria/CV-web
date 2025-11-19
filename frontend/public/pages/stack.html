@@ -29,18 +29,6 @@
         .caveat{
             font-family: 'Caveat', sans-serif;
         }
-        .page {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            position: absolute;
-            width: 100%;
-        }
-
-        .page.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
     </style>
 </head>
 <body>
@@ -52,53 +40,7 @@
             </nav>
             <h1 class="text-accent font-bold text-4xl">СТЭК ТЕХНОЛОГИЙ</h1>
         </div>
-        <div class="grid grid-cols-3 gap-8 mt-12">
-            <div class="border rounded-lg border-black-500 hover:drop-shadow">
-                <div class="p-4">
-                    <h2 class="caveat text-accent text-center text-4xl">BACKEND</h2>
-                    <div class="p-6 text-xl">
-                        <ul>
-                            <li>&bull; Golang</li>
-                            <li>&bull; PostgreSQL</li>
-                            <li>&bull; Docker</li>
-                            <li>&bull; REST API</li>
-                            <li>&bull; gRPC</li>
-                            <li>&bull; Apache Kafka</li>
-                            <li>&bull; Gorm</li>
-                            <li>&bull; Git</li>
-                            <li>&bull; Sql</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="border rounded-lg border-black-500 hover:drop-shadow">
-            <div class="p-4">
-                    <h2 class="caveat text-accent text-center text-4xl">FRONTEND</h2>
-                    <div class="p-6 text-xl">
-                        <ul>
-                            <li>&bull; HTML</li>
-                            <li>&bull; Tailwind CSS</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="border rounded-lg border-black-500 hover:drop-shadow">
-                <div class="p-4">
-                    <h2 class="caveat text-accent text-center text-4xl">ИНСТРУМЕНТЫ</h2>
-                    <div class="p-6 text-xl">
-                        <ul>
-                            <li>&bull; Docker Desktop</li>
-                            <li>&bull; Gitlab</li>
-                            <li>&bull; Github</li>
-                            <li>&bull; IDE Goland</li>
-                            <li>&bull; Postman</li>
-                            <li>&bull; Figma</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <div class="grid grid-cols-3 gap-8 mt-12" id="skills-container">
         </div>
     </div>
 </div>

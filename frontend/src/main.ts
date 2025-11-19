@@ -1,30 +1,45 @@
-
-import { EducationApi } from './components/api.js';
+import { Api } from './components/api.js';
 import { Renderer } from './components/renderer.js';
 
 class App {
-    private educationApi: EducationApi;
+    private educationApi: Api;
+    private skillApi: Api;
     private renderer: Renderer;
 
     constructor() {
-        this.educationApi = new EducationApi();
-        this.renderer = new Renderer('education-container');
+        this.educationApi = new Api();
+        this.skillApi = new Api();
+        this.renderer = new Renderer();
     }
 
     async init(): Promise<void> {
         if (document.getElementById('education-container')) {
             await this.loadEducationData();
         }
+        if (document.getElementById('skills-container')) {
+            await this.loadSkillsData();
+        }
     }
 
     private async loadEducationData(): Promise<void> {
         try {
-            this.renderer.showLoading();
+            this.renderer.showLoading('education');
             const educationData = await this.educationApi.getEducation();
             this.renderer.createEducationItem(educationData);
         } catch(error) {
             console.error('Failed to load education data:', error);
-            this.renderer.showLoading();
+            this.renderer.showError('Не удалось загрузить данные об образовании', 'education');
+        }
+    }
+
+    private async loadSkillsData(): Promise<void> {
+        try {
+            this.renderer.showLoading('skills');
+            const skillsData = await this.skillApi.getSkills();
+            this.renderer.createSkillItem(skillsData);
+        } catch(error) {
+            console.error('Failed to load skills data:', error);
+            this.renderer.showError('Не удалось загрузить данные о навыках', 'skills');
         }
     }
 }

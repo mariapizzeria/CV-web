@@ -3,3 +3,8 @@ export interface EducationApiResponse {
     college: string;
     course: string;
 }
+
+export interface SkillApiResponse {
+    type: string;
+    skill: string[];
+}
