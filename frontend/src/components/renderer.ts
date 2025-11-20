@@ -23,7 +23,7 @@ export class Renderer {
 
         social.forEach((item) => {
             htmlString += `
-            <p><a href="${item.image}"><img src="${item.link}" alt="" class="w-9"></a></p>
+            <p><a href="${item.link}"><img src="${item.image}" alt="" class="w-9"></a></p>
             `;
         });
         this.socialContainer.innerHTML = htmlString;
