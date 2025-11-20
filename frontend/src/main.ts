@@ -5,12 +5,14 @@ class App {
     private educationApi: Api;
     private skillApi: Api;
     private experienceApi: Api;
+    private socialApi: Api;
     private renderer: Renderer;
 
     constructor() {
         this.educationApi = new Api();
         this.skillApi = new Api();
         this.experienceApi = new Api();
+        this.socialApi = new Api();
         this.renderer = new Renderer();
     }
 
@@ -23,6 +25,19 @@ class App {
         }
         if (document.getElementById('experience-container')) {
             await this.loadExperienceData();
+        }
+        if (document.getElementById('social-container')) {
+            await this.loadSocialData();
+        }
+    }
+    private async loadSocialData(): Promise<void> {
+        try {
+            this.renderer.showLoading('social');
+            const socialData = await this.socialApi.getSocial();
+            this.renderer.createSocialItem(socialData);
+        } catch(error) {
+            console.error('Failed to load social data:', error);
+            this.renderer.showError('Не удалось загрузить данные об соц.сетях', 'social');
         }
     }
 

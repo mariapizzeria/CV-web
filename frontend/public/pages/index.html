@@ -32,45 +32,49 @@
     </style>
 </head>
 <body>
-    <div>
-        <div class="grid grid-cols-3 gap-3">
-            <div class="p-6 flex flex-col justify-center">
-                <h2 class="caveat text-3xl">Кислицкая Мария</h2>
-                <h1 class="text-accent font-bold text-4xl">BACKEND разработчик</h1>
-                <p class="mt-4">
-                    Я считаю, что продуманный пользовательский интерфейс и качественная кодовая база
-                    одинаково важны для успеха проекта. В своей работе я уделяю особое внимание чистой
-                    архитектуре, читаемости кода и его сопровождаемости, а также документированию ключевых
-                    решений. Ищу команду, которая разделяет этот принцип подхода к разработке.
-                </p>
-            </div>
+<div class="grid grid-cols-3 gap-3">
 
-            <div>
-                <div class="bg-[#BEBCAE] rounded-b-full max-w-md overflow-hidden">
-                    <img src="image/resume.png" class="w-full h-full object-cover rounded-b-full" alt="">
-                </div>
-            </div>
-            <div class="p-6 flex flex-col justify-center">
-                <div class="mb-4">
-                    <h3 class="font-bold text-accent text-xl">2 года</h3>
-                    <p>Опыт коммерческой разработки</p>
-                </div>
-                <div class="mb-4">
-                    <h3 class="font-bold text-accent text-xl">Разработчик веб-приложений</h3>
-                    <p>Закончила обучение по специальсности</p>
-                </div>
-                <div class="mb-4">
-                    <h3 class="font-bold text-accent text-xl">Golang, Postgres, REST API, gRPC</h3>
-                    <p>Основные навыки</p>
-                </div>
-            </div>
+    <div class="p-12 flex flex-col justify-center">
+        <h2 class="caveat text-4xl">Кислицкая Мария</h2>
+        <h1 class="text-accent font-bold text-4xl">BACKEND разработчик</h1>
+        <p class="mt-4">
+            Я считаю, что продуманный пользовательский интерфейс и качественная кодовая база
+            одинаково важны для успеха проекта. В своей работе я уделяю особое внимание чистой
+            архитектуре, читаемости кода и его сопровождаемости, а также документированию ключевых
+            решений. Ищу команду, которая разделяет этот принцип подхода к разработке.
+        </p>
+    </div>
+
+    <div class="flex gap-8">
+        <div class="flex flex-col gap-4 text-2xl mt-12" id="social-container"></div>
+        <div class="bg-[#BEBCAE] rounded-b-full max-w-md overflow-hidden">
+            <img src="image/resume.png" class="w-full h-full object-cover rounded-b-full" alt="">
         </div>
+    </div>
+
+    <div class="p-12 flex flex-col justify-center">
+        <div class="mb-4">
+            <h3 class="font-bold text-accent text-2xl">2 года</h3>
+            <p>Опыт коммерческой разработки</p>
+        </div>
+        <div class="mb-4">
+            <h3 class="font-bold text-accent text-2xl">Разработчик веб-приложений</h3>
+            <p>Закончила обучение по специальсности</p>
+        </div>
+        <div class="mb-4">
+            <h3 class="font-bold text-accent text-2xl">Golang, Postgres, REST API, gRPC</h3>
+            <p>Основные навыки</p>
+        </div>
+    </div>
+
+</div>
+
         <nav class="flex justify-center gap-12 p-6 m-6">
             <a href="edu.html" class="caveat text-3xl hover:underline hover:text-accent">Образование &rarr;</a>
             <a href="exp.html" class="caveat text-3xl hover:underline hover:text-accent">Опыт работы &rarr;</a>
             <a href="stack.html" class="caveat text-3xl hover:underline hover:text-accent">Стэк технологий &rarr;</a>
         </nav>
-    </div>
+
 <script type="module" src="../dist/main.js"></script>
 </body>
 </html>

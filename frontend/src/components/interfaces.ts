@@ -14,3 +14,8 @@ export interface ExperienceApiResponse {
     title: string;
     description: string;
 }
+
+export interface SocialApiResponse {
+    link: string;
+    image: string;
+}

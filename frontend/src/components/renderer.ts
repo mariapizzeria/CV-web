@@ -1,14 +1,32 @@
-import { EducationApiResponse, SkillApiResponse, ExperienceApiResponse } from './interfaces.js';
+import { EducationApiResponse, SkillApiResponse, ExperienceApiResponse, SocialApiResponse } from './interfaces.js';
 
 export class Renderer {
     private educationContainer: HTMLElement | null;
     private skillsContainer: HTMLElement | null;
     private experienceContainer: HTMLElement | null;
+    private socialContainer: HTMLElement | null;
 
     constructor() {
         this.educationContainer = document.getElementById('education-container');
         this.skillsContainer = document.getElementById('skills-container');
         this.experienceContainer = document.getElementById('experience-container');
+        this.socialContainer = document.getElementById('social-container');
+    }
+
+    public createSocialItem(social: SocialApiResponse[]): void {
+        if (!this.socialContainer) {
+            console.warn('Container not found');
+            return;
+        }
+
+        let htmlString = '';
+
+        social.forEach((item) => {
+            htmlString += `
+            <p><a href="${item.image}"><img src="${item.link}" alt="" class="w-9"></a></p>
+            `;
+        });
+        this.socialContainer.innerHTML = htmlString;
     }
 
     public createExperienceItem(experience: ExperienceApiResponse[]): void {
@@ -104,7 +122,7 @@ export class Renderer {
         this.educationContainer.innerHTML = htmlString;
     }
 
-    public showLoading(containerType: 'education' | 'skills' | 'experience'): void {
+    public showLoading(containerType: 'education' | 'skills' | 'experience' | 'social'): void {
         let container: HTMLElement | null;
 
         switch (containerType) {
@@ -116,6 +134,9 @@ export class Renderer {
                 break;
             case 'experience':
                 container = this.experienceContainer;
+                break;
+            case 'social':
+                container = this.socialContainer;
                 break;
             default:
                 container = null;
@@ -132,7 +153,7 @@ export class Renderer {
         </div>`;
     }
 
-    public showError(message: string, containerType: 'education' | 'skills' | 'experience'): void {
+    public showError(message: string, containerType: 'education' | 'skills' | 'experience' | 'social'): void {
         let container: HTMLElement | null;
 
         switch (containerType) {
@@ -144,6 +165,9 @@ export class Renderer {
                 break;
             case 'experience':
                 container = this.experienceContainer;
+                break;
+            case 'social':
+                container = this.socialContainer;
                 break;
             default:
                 container = null;
