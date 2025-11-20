@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/mariapizzeria/cv-web/backend/middleware"
 	"github.com/mariapizzeria/cv-web/backend/pkg/customErrors"
 	"github.com/mariapizzeria/cv-web/backend/pkg/response"
 	"gorm.io/gorm"
@@ -22,9 +23,9 @@ func NewHandler(router *http.ServeMux, deps HandlerDeps) {
 		Repository: deps.Repository,
 	}
 	router.HandleFunc("GET /education", handler.getAll())
-	router.HandleFunc("POST /education", handler.createNewContent())
-	router.HandleFunc("PUT /education/{id}", handler.updateContent())
-	router.HandleFunc("DELETE /education/{id}", handler.deleteContentById())
+	router.Handle("POST /education", middleware.IsAllowed(handler.createNewContent()))
+	router.Handle("PUT /education/{id}", middleware.IsAllowed(handler.updateContent()))
+	router.Handle("DELETE /education/{id}", middleware.IsAllowed(handler.deleteContentById()))
 }
 
 func (handler *Handler) getAll() http.HandlerFunc {
