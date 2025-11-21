@@ -4,9 +4,10 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
-    "dev": "tsc && npx live-server"
+    "dev": "tsc && npx live-server --open=public/pages/index.html"
   },
   "devDependencies": {
+    "live-server": "^1.2.2",
     "typescript": "^5.0.0"
   }
 }
