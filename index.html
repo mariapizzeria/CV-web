@@ -3,136 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мария Кислицкая | Web разработчик</title>
-    <meta name="description" content="Веб-разработчик Мария Кислицкая. Создаю современные и адаптивные сайты на Go и TypeScript. Портфолио и контакты.">
-    <meta name="author" content="Мария Кислицкая">
+    <meta name="robots" content="nofollow, noindex" />
+    <title>Загрузка...</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    screens: {
-                        'max-1024': {'max': '1024px'},
-                        'max-780': {'max': '780px'},
-                    },
-                    colors: {
-                        accent: "#313B52",
-                    }
-                }
-            }
-        }
-    </script>
+    <meta http-equiv="refresh" content="1;url=frontend/public/pages/main.html">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Caveat:wght@400..700&display=swap');
-        body{
-            background: white;
-            font-family: "Arimo", sans-serif;
-            color: #444444;
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
-        .caveat{
-            font-family: 'Caveat', sans-serif;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        .animate-fade-in {
-            animation: fadeIn 1s ease-in-out forwards;
+        .spinner {
+            animation: spin 1s linear infinite;
         }
     </style>
 </head>
 <body>
-<!--desktop-->
-<div class="lg:grid lg:grid-cols-3 lg:gap-3 opacity-0 animate-fade-in hidden lg:block">
-
-    <div class="p-12 flex flex-col justify-center">
-        <h2 class="caveat text-4xl">Кислицкая Мария</h2>
-        <h1 class="text-accent font-bold text-4xl">BACKEND разработчик</h1>
-        <p class="mt-4">
-            Я считаю, что продуманный пользовательский интерфейс и качественная кодовая база
-            одинаково важны для успеха проекта. В своей работе я уделяю особое внимание чистой
-            архитектуре, читаемости кода и его сопровождаемости, а также документированию ключевых
-            решений. Ищу команду, которая разделяет этот принцип подхода к разработке.
-        </p>
-    </div>
-
-    <div class="flex gap-8">
-        <div class="flex flex-col gap-4 text-2xl mt-12" id="social-container"></div>
-        <div class="bg-[#BEBCAE] rounded-b-full max-w-md overflow-hidden">
-            <img src="frontend/public/pages/image/resume.png" class="w-full h-full object-cover rounded-b-full" alt="">
-        </div>
-    </div>
-
-    <div class="p-12 flex flex-col justify-center">
-        <div class="mb-4">
-            <h3 class="font-bold text-accent text-2xl">2 года</h3>
-            <p>Опыт коммерческой разработки</p>
-        </div>
-        <div class="mb-4">
-            <h3 class="font-bold text-accent text-2xl">Разработчик веб-приложений</h3>
-            <p>Закончила обучение по специальсности</p>
-        </div>
-        <div class="mb-4">
-            <h3 class="font-bold text-accent text-2xl">Golang, Postgres, REST API, gRPC</h3>
-            <p>Основные навыки</p>
-        </div>
-    </div>
-
+<div class="text-center text-black m-12">
+    <div class="spinner w-16 h-16 border-4 border-black/30 border-t-black rounded-full mx-auto mb-6"></div>
+    <p class="text-lg opacity-80 mb-2">Загрузка...</p>
 </div>
-
-<nav class="flex justify-center gap-12 p-6 m-6 opacity-0 animate-fade-in">
-    <a href="frontend/public/pages/edu.html" class="caveat text-3xl hover:underline hover:text-accent">Образование &rarr;</a>
-    <a href="frontend/public/pages/exp.html" class="caveat text-3xl hover:underline hover:text-accent">Опыт работы &rarr;</a>
-    <a href="frontend/public/pages/stack.html" class="caveat text-3xl hover:underline hover:text-accent">Стэк технологий &rarr;</a>
-</nav>
-
-<!--mobile-->
-<div class="flex flex-col justify-center opacity-0 animate-fade-in block lg:hidden p-6">
-
-    <div class="flex justify-center gap-8">
-        <div class="bg-[#BEBCAE] rounded-full max-w-md overflow-hidden">
-            <img src="frontend/public/pages/image/resume.png" class="w-full h-full object-cover rounded-full" alt="">
-        </div>
-    </div>
-
-    <div class="p-12 flex flex-col justify-center">
-        <h2 class="caveat text-4xl text-center">Кислицкая Мария</h2>
-        <h1 class="text-accent font-bold text-4xl text-center">BACKEND разработчик</h1>
-        <p class="mt-4">
-            Я считаю, что продуманный пользовательский интерфейс и качественная кодовая база
-            одинаково важны для успеха проекта. В своей работе я уделяю особое внимание чистой
-            архитектуре, читаемости кода и его сопровождаемости, а также документированию ключевых
-            решений. Ищу команду, которая разделяет этот принцип подхода к разработке.
-        </p>
-    </div>
-
-    <div class="flex flex-col justify-center text-center">
-        <div class="mb-4">
-            <h3 class="font-bold text-accent text-2xl">2 года</h3>
-            <p>Опыт коммерческой разработки</p>
-        </div>
-        <div class="mb-4">
-            <h3 class="font-bold text-accent text-2xl">Разработчик веб-приложений</h3>
-            <p>Закончила обучение по специальсности</p>
-        </div>
-        <div class="mb-4">
-            <h3 class="font-bold text-accent text-2xl">Golang, Postgres, REST API, gRPC</h3>
-            <p>Основные навыки</p>
-        </div>
-    </div>
-
-    <div class="flex justify-center gap-6 text-2xl mt-12">
-        <a href="https://github.com/mariapizzeria"><img src="frontend/public/pages/image/github.svg" alt=""></a>
-        <a href="https://ru.stackoverflow.com/users/659291/maggot"><img src="frontend/public/pages/image/stack.svg" alt=""></a>
-        <a href="https://ekaterinburg.hh.ru/resume/74f4e1a6ff0f91a2840039ed1f687875694238"><img src="frontend/public/pages/image/hhru.svg" alt=""></a>
-    </div>
-
-</div>
-
-<script type="module" src="frontend/public/dist/main.js"></script>
 </body>
 </html>

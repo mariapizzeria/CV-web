@@ -4,7 +4,7 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
-    "dev": "tsc && npx live-server --open=public/pages/index.html"
+    "dev": "tsc && npx live-server --open=../../../index.html"
   },
   "devDependencies": {
     "live-server": "^1.2.2",
