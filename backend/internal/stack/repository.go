@@ -1,7 +1,8 @@
 package stack
 
 import (
-	"github.com/mariapizzeria/cv-web/backend/pkg/db"
+	"cv-web/backend/pkg/db"
+
 	"gorm.io/gorm/clause"
 )
 

@@ -1,12 +1,12 @@
 package social
 
 import (
+	"cv-web/backend/middleware"
+	"cv-web/backend/pkg/customErrors"
+	"cv-web/backend/pkg/response"
 	"net/http"
 	"strconv"
 
-	"github.com/mariapizzeria/cv-web/backend/middleware"
-	"github.com/mariapizzeria/cv-web/backend/pkg/customErrors"
-	"github.com/mariapizzeria/cv-web/backend/pkg/response"
 	"gorm.io/gorm"
 )
 

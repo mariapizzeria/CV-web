@@ -1,16 +1,15 @@
 package main
 
 import (
+	"cv-web/backend/internal/education"
+	"cv-web/backend/internal/experience"
+	"cv-web/backend/internal/social"
+	"cv-web/backend/internal/stack"
+	"cv-web/backend/middleware"
+	"cv-web/backend/pkg/configs"
+	"cv-web/backend/pkg/db"
 	"log"
 	"net/http"
-
-	"github.com/mariapizzeria/cv-web/backend/internal/education"
-	"github.com/mariapizzeria/cv-web/backend/internal/experience"
-	"github.com/mariapizzeria/cv-web/backend/internal/social"
-	"github.com/mariapizzeria/cv-web/backend/internal/stack"
-	"github.com/mariapizzeria/cv-web/backend/middleware"
-	"github.com/mariapizzeria/cv-web/backend/pkg/configs"
-	"github.com/mariapizzeria/cv-web/backend/pkg/db"
 )
 
 func App() http.Handler {
