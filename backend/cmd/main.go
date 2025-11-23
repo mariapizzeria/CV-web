@@ -43,6 +43,6 @@ func main() {
 		Addr:    ":8082",
 		Handler: middleware.CORSHandler(app),
 	}
-	log.Println("Listening on port 8082")
+	log.Println("Server is listening")
 	server.ListenAndServe()
 }

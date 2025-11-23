@@ -3,8 +3,8 @@
     "target": "ES2020",
     "module": "ESNext",
     "moduleResolution": "node",
-    "outDir": "./public/dist",
-    "rootDir": "./src",
+    "outDir": "public/dist",
+    "rootDir": "src",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -12,6 +12,10 @@
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "public/dist"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": ["node_modules",
+    "public/dist"
+  ]
 }
