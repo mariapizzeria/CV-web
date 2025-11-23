@@ -1,9 +1,9 @@
 package experience
 
 import (
-	"cv-web/backend/middleware"
-	"cv-web/backend/pkg/customErrors"
-	"cv-web/backend/pkg/response"
+	"cv-web/middleware"
+	"cv-web/pkg/customErrors"
+	"cv-web/pkg/response"
 	"net/http"
 	"strconv"
 

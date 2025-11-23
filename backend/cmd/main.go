@@ -1,13 +1,13 @@
 package main
 
 import (
-	"cv-web/backend/internal/education"
-	"cv-web/backend/internal/experience"
-	"cv-web/backend/internal/social"
-	"cv-web/backend/internal/stack"
-	"cv-web/backend/middleware"
-	"cv-web/backend/pkg/configs"
-	"cv-web/backend/pkg/db"
+	"cv-web/internal/education"
+	"cv-web/internal/experience"
+	"cv-web/internal/social"
+	"cv-web/internal/stack"
+	"cv-web/middleware"
+	"cv-web/pkg/configs"
+	"cv-web/pkg/db"
 	"log"
 	"net/http"
 )

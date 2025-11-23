@@ -1,7 +1,7 @@
 package stack
 
 import (
-	"cv-web/backend/pkg/db"
+	"cv-web/pkg/db"
 
 	"gorm.io/gorm/clause"
 )
